@@ -14,7 +14,7 @@ string get_full_path(const string& name) {
         s.pop_back();
     return s + name;
 }
-TEST(Parser, empty_parser) {
+TEST(Parser, EmptyParser) {
     Parser a;
     ASSERT_TRUE(a.empty_json_obj());
     Parser b;

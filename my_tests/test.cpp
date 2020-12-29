@@ -3,6 +3,9 @@
 #include <gtest/gtest.h>
 #include <sstream>
 #include "parser.hpp"
+using std::any_cast;
+using std::out_of_range;
+using std::stringstream;
 
 // Тесты для класса Parser
 string get_full_path(const string& name) {
@@ -197,11 +200,11 @@ TEST(Parser, PrintRow) {
     ASSERT_THROW(p.print_row(ss, s), invalid_argument);
 }
 TEST(Parser, ConstructorThrow) {
-    ASSERT_THROW(Parser(getFullPath("WrongCount.json")), out_of_range);
-    ASSERT_THROW(Parser(getFullPath("NotArray.json")), invalid_argument);
+    ASSERT_THROW(Parser(get_full_path("WrongCount.json")), out_of_range);
+    ASSERT_THROW(Parser(get_full_path("NotArray.json")), invalid_argument);
 }
 TEST(Parser, Constructor) {
-    Parser b(getFullPath("students.json"));
+    Parser b(get_full_path("students.json"));
     ASSERT_EQ(b.get_len().len_name, 15);
     ASSERT_EQ(b.get_len().len_group, 10);  // 9+1
     ASSERT_EQ(b.get_len().len_avg, 6);
@@ -209,7 +212,7 @@ TEST(Parser, Constructor) {
 }
 TEST(Parser, PrintData) {
     std::stringstream ss;
-    Parser p(getFullPath("students.json"));
+    Parser p(get_full_path("students.json"));
     ss << p;
     std::string correct(R"(|name           |group     |avg   |debt           |
 |---------------|----------|------|---------------|

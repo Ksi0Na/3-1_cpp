@@ -129,10 +129,10 @@ TEST(Parser, length_of_fields) {
     "count": 3
   }
 })");
-    ASSERT_EQ(b.get_len().len_name, 22);  // 21+1
-    ASSERT_EQ(b.get_len().len_group, 17);  // 16+1
+    ASSERT_EQ(b.get_len().len_name, 22);
+    ASSERT_EQ(b.get_len().len_group, 8);
     ASSERT_EQ(b.get_len().len_avg, 6);
-    ASSERT_EQ(b.get_len().len_debt, 19);  // 18+1
+    ASSERT_EQ(b.get_len().len_debt, 19);
 }
 TEST(Parser, number_of_students) {
     ASSERT_EQ(Parser().get_students().size(), 0);

@@ -30,7 +30,7 @@ hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
 hunter_add_package(nlohmann_json)
-find_package(nlohmann_json CONFIG REQUIRED)
+find_package(nlohmann_json 3.2.0 CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC
         # enum your files and delete this comment
